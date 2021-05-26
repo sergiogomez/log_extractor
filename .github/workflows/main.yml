@@ -2,15 +2,30 @@ name: Ruby
 
 on: [push,pull_request]
 
+env:
+  RUBY_VERSION: 2.6.6
+
 jobs:
-  build:
+  rspec:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.6.6
+        ruby-version: ${{ env.RUBY_VERSION }}
         bundler-cache: true
-    - name: Run the default task
-      run: bundle exec rake
+    - name: Run tests
+      run: bundle exec rake spec
+  rubocop:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ env.RUBY_VERSION }}
+    - name: Install Rubocop
+      run: gem install rubocop
+    - name: Run tests
+      run: rubocop

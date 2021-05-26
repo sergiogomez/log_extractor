@@ -6,32 +6,37 @@ Gem::Specification.new do |spec|
   spec.name          = "log_extractor"
   spec.version       = LogExtractor::VERSION
   spec.authors       = ["Sergio Gómez"]
-  spec.email         = ["36518+sergiogomez@users.noreply.github.com"]
+  spec.email         = ["hola@sergio-gomez.com"]
 
-  spec.summary       = "TODO: Write a short summary, because RubyGems requires one."
-  spec.description   = "TODO: Write a longer description or delete this line."
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = "Simple tool to extract and parse logs from ELK syslog_messages"
+  spec.description   = "Abstraction layers for ElasticSearch and for parsing logs"
+  spec.homepage      = "https://github.com/sergiogomez/log_extractor"
   spec.license       = "MIT"
-  spec.required_ruby_version = ">= 2.4.0"
+  spec.required_ruby_version = ">= 2.6.6"
 
-  spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
+  # spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
-  spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
+  spec.metadata["source_code_uri"] = spec.homepage
+  spec.metadata["changelog_uri"] = "#{spec.homepage}/CHANGELOG.md"
+  spec.metadata["documentation_uri"] = "#{spec.homepage}/README.md"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
   spec.files = Dir.chdir(File.expand_path(__dir__)) do
     `git ls-files -z`.split("\x0").reject { |f| f.match(%r{\A(?:test|spec|features)/}) }
   end
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
+  # spec.bindir        = "exe"
+  # spec.executables   = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  # Uncomment to register a new dependency of your gem
-  # spec.add_dependency "example-gem", "~> 1.0"
+  spec.add_runtime_dependency "attr_extras", "~> 6.2"
+  spec.add_runtime_dependency "elasticsearch", "~> 7.12"
 
-  # For more information and examples about making a new gem, checkout our
-  # guide at: https://bundler.io/guides/creating_gem.html
+  spec.add_development_dependency "bundler", "~> 2.2"
+  spec.add_development_dependency "pry", "~> 0.13"
+  spec.add_development_dependency "pry-byebug", "~> 3.9"
+  spec.add_development_dependency "rake", "~> 13.0"
+  spec.add_development_dependency "rspec", "~> 3.10"
+  spec.add_development_dependency "rubocop", "~> 1.15"
 end
