@@ -3,9 +3,7 @@ module LogExtractor
     rattr_initialize %i[source]
 
     def syslog_message
-      # rubocop:disable Security/Eval
-      @syslog_message ||= eval syslog_message_value
-      # rubocop:enable Security/Eval
+      @syslog_message ||= source["syslog_message"]
     end
 
     def timestamp
@@ -16,14 +14,6 @@ module LogExtractor
 
     def timestamp_raw
       @timestamp_raw ||= source["@timestamp"]
-    end
-
-    def syslog_message_raw
-      @syslog_message_raw ||= source["syslog_message"]
-    end
-
-    def syslog_message_value
-      @syslog_message_value ||= syslog_message_raw.sub(/\[.*\]: /, "")
     end
   end
 end
