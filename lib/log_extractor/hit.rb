@@ -4,18 +4,17 @@ module LogExtractor
   class Hit
     rattr_initialize %i[source]
 
-    def syslog_message
-      @syslog_message ||= source["syslog_message"]
+    def method_missing(method_name, *_args, &_block)
+      value = source[method_name.to_s]
+      value.nil? ? super : value
+    end
+
+    def respond_to_missing?(method_name, *_args)
+      !source[method_name.to_s].nil?
     end
 
     def timestamp
-      @timestamp ||= DateTime.rfc3339(timestamp_raw).to_time
-    end
-
-    private
-
-    def timestamp_raw
-      @timestamp_raw ||= source["@timestamp"]
+      DateTime.rfc3339(source["@timestamp"]).to_time
     end
   end
 end
