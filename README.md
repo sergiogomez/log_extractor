@@ -1,28 +1,43 @@
 # LogExtractor
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/log_extractor`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Simple tool to extract and parse logs easily from ELK.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'log_extractor'
+gem "log_extractor"
 ```
 
 And then execute:
 
-    $ bundle install
+```bash
+$ bundle install
+```
 
 Or install it yourself as:
 
-    $ gem install log_extractor
+```bash
+$ gem install log_extractor
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+Setup an environment variable with the url from your ELK server to extract the logs:
+
+```bash
+export ELK_URL=http://localhost:9200/
+```
+
+Pick a query (Lucene) and a period (in minutes, 15 minutes by default), and you'll have every matching log in a block ready to extract whatever you need:
+
+```ruby
+LogExtractor::Extract.call(query: "[your query]", period: 15) do |log|
+  puts log.timestamp
+  puts log.inspect
+end
+```
 
 ## Development
 
@@ -32,7 +47,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/log_extractor. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/log_extractor/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/sergiogomez/log_extractor. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/sergiogomez/log_extractor/blob/main/CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -40,4 +55,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the LogExtractor project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/log_extractor/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the LogExtractor project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/sergiogomez/log_extractor/blob/main/CODE_OF_CONDUCT.md).
