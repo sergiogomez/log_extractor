@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module LogExtractor
   class Search
-    SCROLL = "5m".freeze
+    SCROLL = "5m"
 
     rattr_initialize %i[query period]
 

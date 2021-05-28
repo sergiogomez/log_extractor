@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module LogExtractor
   class Extract
     method_object %i[query! period!]

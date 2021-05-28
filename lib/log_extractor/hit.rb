@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module LogExtractor
   class Hit
     rattr_initialize %i[source]
