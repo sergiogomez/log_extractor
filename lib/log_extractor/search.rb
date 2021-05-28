@@ -4,7 +4,7 @@ module LogExtractor
   class Search
     SCROLL = "5m"
 
-    rattr_initialize %i[query period]
+    rattr_initialize %i[query! period]
 
     def response
       client.search body: body, scroll: SCROLL
@@ -58,7 +58,7 @@ module LogExtractor
     end
 
     def client
-      @client ||= Elasticsearch::Client.new url: ENV["ELK_URL"], logs: true
+      @client ||= Elasticsearch::Client.new
     end
   end
 end

@@ -27,7 +27,7 @@ $ gem install log_extractor
 Setup an environment variable with the url from your ELK server to extract the logs:
 
 ```bash
-export ELK_URL=http://localhost:9200/
+export ELASTICSEARCH_URL=http://localhost:9200/
 ```
 
 Pick a query (Lucene) and a period (in minutes, 15 minutes by default), and you'll have every matching log in a block ready to extract whatever you need:
