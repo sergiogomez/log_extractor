@@ -33,7 +33,7 @@ export ELASTICSEARCH_URL=http://localhost:9200/
 Pick a query (Lucene) and a period (in minutes, 15 minutes by default), and you'll have every matching log in a block ready to extract whatever you need:
 
 ```ruby
-LogExtractor::Extract.call(query: "[your query]", period: 15) do |log|
+LogExtractor::Extract.(query: "[your query]", period: 15) do |log|
   puts log.timestamp
   puts log.inspect
 end

@@ -2,7 +2,7 @@
 
 module LogExtractor
   class Extract
-    method_object %i[query! period!]
+    method_object [:query!, { period: 15 }]
 
     def call(&block)
       @response = search.response

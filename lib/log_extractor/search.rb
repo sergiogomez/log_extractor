@@ -4,7 +4,7 @@ module LogExtractor
   class Search
     SCROLL = "5m"
 
-    rattr_initialize %i[query! period]
+    rattr_initialize [:query!, { period: 15 }]
 
     def response
       client.search body: body, scroll: SCROLL
