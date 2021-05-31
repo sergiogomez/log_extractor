@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description   = "Abstraction layers for ElasticSearch and for parsing logs"
   spec.homepage      = "https://github.com/sergiogomez/log_extractor"
   spec.license       = "MIT"
-  spec.required_ruby_version = ">= 2.6.6"
+  spec.required_ruby_version = ">= 2.5"
 
   # spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
