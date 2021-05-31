@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Sergio Gómez"]
   spec.email         = ["hola@sergio-gomez.com"]
 
-  spec.summary       = "Simple tool to extract and parse logs from ELK syslog_messages"
-  spec.description   = "Abstraction layers for ElasticSearch and for parsing logs"
+  spec.summary       = "Simple tool to extract and parse logs easily from ELK"
+  spec.description   = "Simple tool to extract and parse logs easily from ELK"
   spec.homepage      = "https://github.com/sergiogomez/log_extractor"
   spec.license       = "MIT"
   spec.required_ruby_version = ">= 2.5"
